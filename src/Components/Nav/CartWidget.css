@@ -1,0 +1,18 @@
+.cart-counter{
+    font-size: 15px;
+    pointer-events: none;
+    padding-right: 4px;
+    font-weight: 600;
+}
+
+.carro{
+    background-color: rgb(182, 118, 0);
+    width: 100px;
+    height: 40px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 0 15px rgb(255, 187, 0);
+    cursor: pointer;
+}
