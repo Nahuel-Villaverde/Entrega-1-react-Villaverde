@@ -1,0 +1,130 @@
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Esto asegura que ocupará el 100% de la altura de la ventana */
+    margin: 0; /* Esto quita el margen predeterminado del cuerpo */
+}
+
+.loading {
+    font-size: 2em; /* Puedes ajustar el tamaño del texto según tus preferencias */
+    text-align: center;
+    color: rgb(182, 118, 0);
+}
+
+
+.perfil-card-detail{
+    display: flex;
+    flex-direction: column;
+    background-color:#212121;
+    color: white;
+    width: 800px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.perfil-image-container-detail{
+    display: flex;
+    justify-content: center;
+}
+
+.perfil-img-detail{
+    width: 400px;
+    margin-top: 25px;
+    height: 205px;
+}
+
+.perfil-titulo-detail{
+    font-size: 32px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 3px;
+    padding-top: 20px;
+}
+
+.perfil-descripcion-detail{
+    font-size: 18px;
+    padding-top: 10px;
+    color: rgba(195, 195, 195, 0.701);
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: start;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.perfil-precio-boton-detail{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    align-items: flex-end;
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.perfil-precio-detail{
+    margin-left: 10%;
+    font-size: 18px;
+    cursor: default;
+}
+
+.perfil-boton-detail{
+    margin-right: 10%;
+    background-color: #111;
+    width: 100px;
+    border-radius: 20px;
+    color: rgb(182, 118, 0);
+    cursor: pointer;
+    border-color: transparent;
+}
+
+.perfil-boton-detail:hover{
+    color: #111;
+    background-color:rgb(182, 118, 0);
+    box-shadow: 0 0 15px rgb(255, 166, 1);
+}
+
+.perfil-boton-detail  span{
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+}
+
+.perfil-card-container-detail {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    max-width: 1350px;
+}
+
+.detail-open-container-detail{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+}
+
+
+.detail-close-detail{
+    background-color: #111;
+    width: 250px;
+    border-radius: 20px;
+    color: rgb(182, 118, 0);
+    cursor: pointer;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 12px;
+    padding: auto;
+    margin-top: 10px;
+}
+
+.detail-close-detail:hover{
+    color: #111;
+    background-color:rgb(182, 118, 0);
+    box-shadow: 0 0 15px rgb(255, 166, 1);
+}
+
+.count-child{
+    display: flex;
+    padding-top: 20px;
+}

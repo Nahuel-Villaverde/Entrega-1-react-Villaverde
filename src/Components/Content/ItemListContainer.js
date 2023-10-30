@@ -1,28 +1,36 @@
-import React from 'react'
-import './ItemListContainer.css'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Card from './Card';
+import './Card.css'
+import Productos from '../../Json/productos.json'
 
-const ItemListContainer = ({imagen, nombre, descripcion, precio}) => {
+const ItemListContainer = () => {
+  const [item, setItem] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(id ? Productos.filter(item => item.categoria === id) : Productos)
+          }, 2000);
+        });
+        setItem(data);
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    };
+    fetchData();
+  }, [id])
+
   return (
-    <div className='perfil-card'>
-        <div className='perfil-image-container'>
-        <img src={imagen} alt='imagen de hamburguesa' className='perfil-img'/>
-        </div>
-        <h2 className='perfil-titulo'>
-            {nombre}
-        </h2>
-        <p className='perfil-descripcion'>
-            {descripcion}
-        </p>
-        <div className='perfil-precio-boton'>
-          <span className='perfil-precio'>
-              ${precio}
-          </span>
-          <div className='perfil-boton'>
-            <span>Pedir</span>
-          </div>
-        </div>
+    <div className="perfil-card-container">
+      {item ? (item.map((h) =>
+        <Card key={h.id} item={h} />
+      )) : (<p>Cargando Hamburguesas...</p>)}
     </div>
   )
 }
 
-export default ItemListContainer
+export default ItemListContainer;

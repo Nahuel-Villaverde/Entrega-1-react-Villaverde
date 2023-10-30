@@ -1,34 +1,24 @@
-import Nav from './Components/Nav/NavBar.js';
+import NavBar from './Components/NavBar/NavBar.js';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Item from './Components/Content/ItemListContainer.js';
+import ItemListContainer from './Components/Content/ItemListContainer.js';
+import PageNotFound from './PageNotFound.js';
+import ItemDetailContainer from './Components/Content/ItemDetailContainer.js';
+
 
 
 function App() {
   return (
-    <div className="App">
-      <Nav />
-      <div className='perfil-card-container'>
-      <Item imagen='https://t4.ftcdn.net/jpg/05/85/29/13/360_F_585291303_BHkNvoBmpPb9riRJRhsyYLcYf3azGL0t.webp' 
-        nombre='Hamburguesa Completa' 
-        descripcion='Medallon de carne de 200g con tomate, lechuga, cebolla, pepino y panceta' 
-        precio='3000'/>
-
-      <Item imagen="https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-bk-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/BK_WEB_HAMBURGUESA-CLASICA_1200X800_020822.png" 
-        nombre='Hamburguesa simple' 
-        descripcion='Medallon de carne de 200g' 
-        precio='900'/>
-
-      <Item imagen='https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-burger-king-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/ExtraBurger-XL.png' 
-        nombre='Hamburguesa Completa' 
-        descripcion='Medallon de carne de 200g con tomate, lechuga, cebolla, pepino y panceta' 
-        precio='3000'/>
-      
-      <Item imagen='https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-burger-king-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/DobleNapolitano-XL-1.png' 
-        nombre='Hamburguesa Completa' 
-        descripcion='Medallon de carne de 200g con tomate, lechuga, cebolla, pepino y panceta' 
-        precio='3000'/>
-      </div>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes> 
+          <Route path="/" element={<ItemListContainer/>} />
+          <Route path="/hamburguesas" element={<ItemListContainer/>} />
+          <Route path={"/hamburguesas/:id"} element={<ItemDetailContainer/>} />
+          <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="*" element={<PageNotFound/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
