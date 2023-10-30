@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ItemListContainer from './Components/Content/ItemListContainer.js';
 import PageNotFound from './PageNotFound.js';
-import ItemDetailContainer from './Components/Content/ItemDetailContainer.js';
+import ItemDetailContainer from './Components/Content/details/ItemDetailContainer.js';
 
 
 

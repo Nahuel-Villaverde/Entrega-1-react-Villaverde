@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
-import './Card.css';
+import '../Card.css';
 
 const CardDetail = ({ hamburger }) => {
   console.log(hamburger);
