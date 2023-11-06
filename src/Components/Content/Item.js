@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import './Card.css'
+import './Item.css'
 
-const Card = ({ item }) => {
+const Item = ({ item }) => {
 
   return (
 
@@ -29,5 +29,5 @@ const Card = ({ item }) => {
   )
 }
 
-export default Card
+export default Item
 

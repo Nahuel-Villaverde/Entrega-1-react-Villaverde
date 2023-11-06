@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CardDetail from './CardDetail';
+import CardDetail from './ItemDetail';
 import Productos from '../../../Json/productos.json';
 import './Details.css';
 

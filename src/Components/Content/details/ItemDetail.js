@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
-import '../Card.css';
+import '../Item.css';
 
-const CardDetail = ({ hamburger }) => {
+const ItemDetail = ({ hamburger }) => {
   console.log(hamburger);
-  const [stock, setStock] = useState(hamburger.stock);
   
   return (
     <div className='perfil-card-container-detail'>
@@ -24,7 +23,7 @@ const CardDetail = ({ hamburger }) => {
           </span>
 
 
-          <ItemCount stock={stock}/>
+          <ItemCount stock={hamburger.stock}/>
 
 
           <div className='perfil-boton-detail'>
@@ -42,4 +41,4 @@ const CardDetail = ({ hamburger }) => {
   );
 };
 
-export default CardDetail;
+export default ItemDetail;

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Details.css'
 
-const CardCount = ({stock}) => {
+const ItemCount = ({stock}) => {
     const [count, setCount] = useState(1);
     console.log(stock);
      
@@ -29,4 +29,4 @@ const CardCount = ({stock}) => {
     );
 };
 
-export default CardCount;
+export default ItemCount;

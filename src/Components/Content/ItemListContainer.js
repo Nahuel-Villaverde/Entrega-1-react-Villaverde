@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Card from './Card';
-import './Card.css'
+import './Item.css'
 import Productos from '../../Json/productos.json'
+import ItemList from './ItemList';
 
 const ItemListContainer = () => {
   const [item, setItem] = useState([]);
@@ -25,10 +25,8 @@ const ItemListContainer = () => {
   }, [id])
 
   return (
-    <div className="perfil-card-container">
-      {item ? (item.map((h) =>
-        <Card key={h.id} item={h} />
-      )) : (<p>Cargando Hamburguesas...</p>)}
+    <div>
+      <ItemList item={item}/>
     </div>
   )
 }
