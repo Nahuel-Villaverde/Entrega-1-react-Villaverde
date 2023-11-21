@@ -1,41 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CardDetail from './ItemDetail';
-import Productos from '../../../Json/productos.json';
+import ItemDetail from './ItemDetail';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import './Details.css';
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
-  const [hamburger, setHamburger] = useState(null);
+  const [hamburger, setHamburger] = useState([]);
 
   useEffect(() => {
-    const fetchHamburgerById = async () => {
-      try {
-        const data = await new Promise((resolve) => {
-          setTimeout(() => {
-            const selectedHamburger = Productos.find((item) => item.id === parseInt(id));
-            resolve(selectedHamburger);
-          }, 2000);
-        });
-
-        setHamburger(data);
-      } catch (error) {
-        console.log('Error:', error);
-      }
-    };
-
-    if (id) {
-      fetchHamburgerById();
-    }
+    const queryDb = getFirestore();
+    const queryDoc = doc(queryDb, 'products', id);
+    getDoc(queryDoc).then((res) => setHamburger({id: res.id, ...res.data()}));
   }, [id]);
 
   return (
     <div>
       {hamburger ? (
-        <CardDetail hamburger={hamburger} />
+        <ItemDetail hamburger={hamburger} />
       ) : (
         <div className='loadingContainer'>
-        <p className='loading'>Cargando detalles...</p>
+          <p className='loading'>Cargando detalles...</p>
         </div>
       )}
     </div>

@@ -7,16 +7,16 @@ const Item = ({ item }) => {
 
     <div className='perfil-card'>
       <div className='perfil-image-container'>
-        <img src={item.imagen} alt={item.nombre} className='perfil-img' />
+        <img src={item.img} alt={item.title} className='perfil-img' />
       </div>
 
-      <h2 className='perfil-titulo'>{item.nombre}</h2>
+      <h2 className='perfil-titulo'>{item.title}</h2>
 
-      <p className='perfil-descripcion'>{item.descripcion}</p>
+      <p className='perfil-descripcion'>{item.description}</p>
 
       <div className='perfil-precio-boton'>
         <span className='perfil-precio'>
-          Precio: ${item.precio.toFixed(2)}
+          Precio: ${item.price.toFixed(2)}
         </span>
       </div>
       <div className='detail-open-container'>

@@ -14,13 +14,15 @@ const NavBar = () => {
           <Link to="/hamburguesas">Hamburgers</Link>
         </li>
         <li>
-        <Link to={`/category/veganas`} >
-          Veganas
-        </Link>
+          <Link to={`/category/veganas`} >
+            Veganas
+          </Link>
         </li>
         <li>Contact us</li>
       </ul>
-      <CartWidget />
+      <Link to="/cart">
+        <CartWidget class="cart-icon" />
+      </Link>
     </div>
   )
 }

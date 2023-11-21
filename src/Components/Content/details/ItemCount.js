@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Details.css'
 
-const ItemCount = ({stock}) => {
-    const [count, setCount] = useState(1);
+const ItemCount = ({ initial, stock, onAdd }) => {
+    const [count, setCount] = useState(parseInt(initial));
     console.log(stock);
      
     const handleIncrement = () => {
@@ -16,6 +16,10 @@ const ItemCount = ({stock}) => {
             setCount(count - 1);
         }
     };
+
+    useEffect(() => {
+		setCount(parseInt(initial));
+	}, [initial]);
  
     return (
         <div className='count-container'>
@@ -25,6 +29,11 @@ const ItemCount = ({stock}) => {
             <button className='perfil-boton-detail' onClick={handleDecrement}>-</button>
             <button className='perfil-boton-detail' onClick={handleIncrement}>+</button> 
             </div>
+            <div>
+				<button disabled={stock <= 0 || count < 1} onClick={() => onAdd(count)} className="operacion">
+					Agregar al carrito
+				</button>
+			</div>
         </div>
     );
 };

@@ -1,3 +1,6 @@
+Este es mi proyecto, es un e-commerce de hamburguesas, hay veganas y no veganas, utilizo css nativo porque me gusta personalizar bien mis componentes, tiene su carrito de compras, podes agregar al carrito los productos que desees mientras esten en stock, tenes que llenar un formulario para comprar, y luego se da un codigo de seguimiento para confirmar la compra.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
