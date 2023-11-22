@@ -7,14 +7,18 @@ import ItemDetailContainer from './Components/Content/details/ItemDetailContaine
 import CartProvider from '../src/Components/Context/CartContext.js';
 import Cart from './Components/Cart.js'
 import { Checkout } from './Components/CheckOut.js';
+import Inicio from './Components/Content/Inicio.js';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <BrowserRouter>
+    <ToastContainer autoClose={1000}/>
     <CartProvider>
       <NavBar />
       <Routes> 
-          <Route path="/" element={<ItemListContainer/>} />
+          <Route path="/" element={<Inicio/>} />
           <Route path="/hamburguesas" element={<ItemListContainer/>} />
           <Route path={"/cart"} element={<Cart/>} />
           <Route path={"/hamburguesas/:id"} element={<ItemDetailContainer/>} />

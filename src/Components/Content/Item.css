@@ -362,3 +362,21 @@
     background-color:rgb(182, 118, 0);
     box-shadow: 0 0 15px rgb(255, 166, 1);
 }
+
+.inicio-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-top: 8%;
+}
+
+.cart-image-inicio img{
+    width: 600px;
+    height: auto;
+}
+
+.titulo-inicio{
+    font-size: 40px;
+    color: white;
+}

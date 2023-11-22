@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './Details.css'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './Details.css';
 
 const ItemCount = ({ initial, stock, onAdd }) => {
     const [count, setCount] = useState(parseInt(initial));
-    console.log(stock);
-     
+    const notify = () => toast("Producto añadido!");
     const handleIncrement = () => {
         if (count < stock) {
             setCount(count + 1);
@@ -18,22 +19,33 @@ const ItemCount = ({ initial, stock, onAdd }) => {
     };
 
     useEffect(() => {
-		setCount(parseInt(initial));
-	}, [initial]);
- 
+        setCount(parseInt(initial));
+    }, [initial]);
+
+    const handleAddToCart = () => {
+        if (stock > 0 && count > 0) {
+            onAdd(count);
+            notify(); // Llama a la función notify para mostrar la notificación
+        } else {
+            toast.error('No se puede agregar al carrito. Verifica el stock y la cantidad.');
+        }
+    };
+
+    
+
     return (
         <div className='count-container'>
             <p>Stock disponible: {stock}</p>
             <p>Cantidad seleccionada: {count}</p>
             <div className='count-child'>
-            <button className='perfil-boton-detail' onClick={handleDecrement}>-</button>
-            <button className='perfil-boton-detail' onClick={handleIncrement}>+</button> 
+                <button className='perfil-boton-detail' onClick={handleDecrement}>-</button>
+                <button className='perfil-boton-detail' onClick={handleIncrement}>+</button>
             </div>
             <div>
-				<button disabled={stock <= 0 || count < 1} onClick={() => onAdd(count)} className="operacion">
-					Agregar al carrito
-				</button>
-			</div>
+                <button disabled={stock <= 0 || count < 1} onClick={handleAddToCart} className="detail-close-detail">
+                    Agregar al carrito
+                </button>
+            </div>
         </div>
     );
 };
