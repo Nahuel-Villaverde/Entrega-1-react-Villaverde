@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useCartContext } from '../Components/Context/CartContext';
 import { Link } from 'react-router-dom';
+import './Content/Item.css'
 import {
   getFirestore,
   collection,
@@ -35,6 +36,7 @@ export const Checkout = () => {
       setError('Los campos de email no coinciden');
       return;
     }
+
     const total = totalPrice();
     const orden = {
       items: cart.map((producto) => ({
@@ -68,10 +70,12 @@ export const Checkout = () => {
         addDoc(collection(db, 'orders'), orden)
           .then((docRef) => {
             setOrdenId(docRef.id);
+            console.log(cart)
             removeProduct();
+            console.log(cart)
           })
           .catch((error) => {
-            console.log('Error en creacon de orden', error);
+            console.log('Error en creacion de orden', error);
             setError('Error en orden');
           });
       })
@@ -89,92 +93,97 @@ export const Checkout = () => {
 
   return (
     <>
-      <h2 className="info">
-        Rellena el formulario y nos contactaremos para enviar sus productos
-      </h2>
+      <div className="form-container">
+        <h2 className="titulo-form">
+          Rellena el formulario y nos contactaremos para enviar sus productos
+        </h2>
 
-      <form onSubmit={manejadorFormulario}>
-        {cart.map((producto) => (
-          <div className="item-check" key={producto.id}>
-            <p>
-              {' '}
-              {producto.nombre} {producto.cantidad}
-            </p>
-            <p> {producto.precio} </p>
+        <form onSubmit={manejadorFormulario}>
+          {cart.map((producto) => (
+            <div key={producto.id}>
+              <p>
+                {' '}
+                {producto.nombre} {producto.cantidad}
+              </p>
+              <p> {producto.precio} </p>
+            </div>
+          ))}
+
+          <div className="form-group">
+            <label className="nombre-input">Nombre</label>
+            <input
+              className="input-check"
+              type="text"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
           </div>
-        ))}
 
-        <div className="form-group">
-          <label className="lab-check">Nombre</label>
-          <input
-            className="input-check"
-            type="text"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-          />
-        </div>
+          <div className="form-group">
+            <label className="nombre-input">Apellido</label>
+            <input
+              className="input-check"
+              type="text"
+              value={apellido}
+              onChange={(e) => setApellido(e.target.value)}
+            />
+          </div>
 
-        <div className="form-group">
-          <label className="lab-check">Apellido</label>
-          <input
-            className="input-check"
-            type="text"
-            value={apellido}
-            onChange={(e) => setApellido(e.target.value)}
-          />
-        </div>
+          <div className="form-group">
+            <label className="nombre-input">Telefono</label>
+            <input
+              className="input-check"
+              type="number"
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+            />
+          </div>
 
-        <div className="form-group">
-          <label className="lab-check">Telefono</label>
-          <input
-            className="input-check"
-            type="number"
-            value={telefono}
-            onChange={(e) => setTelefono(e.target.value)}
-          />
-        </div>
+          <div className="form-group">
+            <label className="nombre-input">Email</label>
+            <input
+              className="input-check"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        <div className="form-group">
-          <label className="lab-check">Email</label>
-          <input
-            className="input-check"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+          <div className="form-group">
+            <label className="nombre-input">Email Confirmacion</label>
+            <input
+              className="input-check"
+              type="email"
+              value={emailConfirmacion}
+              onChange={(e) => setEmailConfirmacion(e.target.value)}
+            />
+          </div>
 
-        <div className="form-group">
-          <label className="lab-check">Email Confirmacion</label>
-          <input
-            className="input-check"
-            type="email"
-            value={emailConfirmacion}
-            onChange={(e) => setEmailConfirmacion(e.target.value)}
-          />
-        </div>
+          {error && <p className="error-campos">{error}</p>}
 
-        {error && <p className="error-campos">{error}</p>}
+          {ordenId && (
+            <div className='orden-container'>
+              <p className="orden">
+                ¡Gracias por tu compra! <br /> Este es tu numero de orden: {' '}
+                {ordenId} {' '}
+              </p>
+            </div>
+          )}
 
-        {ordenId && (
-          <p className="orden">
-            ¡Gracias por tu compra! <br /> Este es tu numero de orden: <br />{' '}
-            {ordenId}{' '}
-          </p>
-        )}
+          <div className="checking">
+            <button className="check-finalizar" type="submit">
+              Finalizar Compra
+            </button>
 
-        <div className="checking">
-          <button className="check-bt" type="submit">
-            Finalizar Compra
-          </button>
-        </div>
-        <br/>
-        <div>
-        <Link to="/">
-          <button className="back-to-home">Volver al Home</button>
-        </Link>
-        </div>
-      </form>
+            <br />
+
+            <Link to="/">
+              <button className="back">Volver al Home</button>
+            </Link>
+          </div>
+        </form>
+      </div>
     </>
+
   );
 };
