@@ -22,7 +22,7 @@ export const Checkout = () => {
   const [error, setError] = useState('');
   const [ordenId, setOrdenId] = useState('');
 
-  const { cart, removeProduct, totalPrice } = useCartContext();
+  const { cart, totalPrice, clearCart } = useCartContext();
 
   const manejadorFormulario = (event) => {
     event.preventDefault();
@@ -71,7 +71,7 @@ export const Checkout = () => {
           .then((docRef) => {
             setOrdenId(docRef.id);
             console.log(cart)
-            removeProduct();
+            clearCart();
             console.log(cart)
           })
           .catch((error) => {
